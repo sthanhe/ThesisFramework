@@ -141,13 +141,26 @@ ylabel(ax,'Specific Heat Capacity (J/kgK)');
 
 
 %% Export figure for manuscript
+fname='cpOverT';
+
+
+%tiff
 t.Units='centimeters';
 t.OuterPosition=[0,0,17,8.5];
 
 fig.Units=t.Units;
 fig.Position(3:4)=t.OuterPosition(3:4)+0.5;
 
-exportgraphics(fig,'cpOverT.tiff','Resolution',600);
+exportgraphics(fig,[fname,'.tiff'],'Resolution',600);
+
+
+%eps
+t.OuterPosition=[0,0,17,8.5];
+fig.Position(3:4)=t.OuterPosition(3:4)+0.5;
+
+warning('off','MATLAB:print:ContentTypeImageSuggested');
+exportgraphics(fig,[fname,'.eps'],'ContentType','vector');
+warning('on','MATLAB:print:ContentTypeImageSuggested');
 
 
 
